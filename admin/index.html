@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>پنل مدیریت | BARISOLAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#10100f;--panel:#191917;--gold:#c6a66a;
+--cream:#f4efe5;--muted:#aaa397;--line:#343128;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:Vazirmatn,sans-serif}
+button,input,textarea,select{font:inherit}
+.layout{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
+aside{background:#151513;border-left:1px solid var(--line);padding:28px 18px}
+.logo{text-align:center;color:var(--gold);font-size:22px;font-weight:800;direction:ltr;margin-bottom:35px}
+.logo small{display:block;font-size:10px;letter-spacing:3px;color:var(--cream)}
+nav a{display:block;padding:13px 15px;margin:7px 0;color:var(--muted);border-radius:9px;text-decoration:none}
+nav a.active,nav a:hover{background:#29251c;color:var(--gold)}
+main{padding:35px;max-width:1200px;width:100%;margin:auto}
+header{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:30px}
+h1{font-size:25px;margin:0}
+p{color:var(--muted)}
+.badge{color:#d5bd83;background:#302a1e;padding:8px 12px;border-radius:20px;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);padding:23px;border-radius:14px;min-width:0}
+.card h2{font-size:17px;margin:0 0 20px;color:var(--gold)}
+label{display:block;font-size:13px;margin:15px 0 7px;color:#ddd5c7}
+input,textarea,select{width:100%;background:#10100f;border:1px solid #494335;border-radius:8px;padding:12px;color:white;outline:none}
+input:focus,textarea:focus{border-color:var(--gold)}
+textarea{min-height:110px;resize:vertical}
+.btn{background:var(--gold);border:0;border-radius:8px;padding:12px 20px;color:#171511;font-weight:700;cursor:pointer;margin-top:15px}
+.note{font-size:12px;line-height:2;color:var(--muted)}
+.full{grid-column:1/-1}
+#status{margin-top:20px;color:var(--gold);font-size:13px}
+@media(max-width:760px){
+.layout{grid-template-columns:1fr}
+aside{padding:15px;border-left:0;border-bottom:1px solid var(--line)}
+.logo{margin:0 0 12px}
+nav{display:flex;overflow-x:auto;gap:6px}
+nav a{white-space:nowrap;margin:0;padding:10px}
+main{padding:20px 14px}
+header{align-items:flex-start;flex-direction:column}
+.grid{grid-template-columns:1fr}
+.full{grid-column:auto}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside>
+<div class="logo">BARISOLAN<small>ADMIN PANEL</small></div>
+<nav>
+<a class="active" href="#dashboard">داشبورد</a>
+<a href="#contact">اطلاعات تماس</a>
+<a href="#content">متن‌های سایت</a>
+<a href="#gallery">نمونه‌کارها</a>
+<a href="#language">زبان‌ها</a>
+<a href="#theme">قالب سایت</a>
+</nav>
+</aside>
+<main>
+<header id="dashboard">
+<div>
+<h1>مدیریت باریسولان</h1>
+<p>به پنل مدیریت وب‌سایت خوش آمدید.</p>
+</div>
+<span class="badge">نسخه مدیریتی ۲</span>
+</header>
+<div class="grid">
+<section class="card" id="contact">
+<h2>اطلاعات تماس</h2>
+<label>نام مدیر یا مسئول اجرا</label>
+<input id="manager" placeholder="نام و نام خانوادگی">
+<label>شماره تماس ایران</label>
+<input id="iran" placeholder="شماره تماس ایران">
+<label>شماره تماس عراق</label>
+<input id="iraq" placeholder="شماره تماس عراق">
+<label>شماره واتساپ</label>
+<input id="whatsapp" placeholder="شماره همراه با کد کشور">
+<p class="note">این فرم فعلاً نمایشی است و هنوز به پایگاه داده متصل نشده است.</p>
+</section>
+<section class="card" id="content">
+<h2>ویرایش محتوای سایت</h2>
+<label>عنوان اصلی صفحه</label>
+<input id="headline" placeholder="زیبایی، در اوج معماری">
+<label>متن معرفی</label>
+<textarea id="intro" placeholder="متن معرفی باریسولان"></textarea>
+<label>توضیحات خدمات</label>
+<textarea id="services" placeholder="توضیحات خدمات"></textarea>
+</section>
+<section class="card" id="gallery">
+<h2>مدیریت نمونه‌کارها</h2>
+<label>عنوان پروژه</label>
+<input id="project" placeholder="نام پروژه">
+<label>آدرس تصویر پروژه</label>
+<input id="image" placeholder="آدرس تصویر">
+<p class="note">بارگذاری واقعی تصاویر پس از اتصال فضای ذخیره‌سازی فعال می‌شود.</p>
+</section>
+<section class="card" id="language">
+<h2>مدیریت زبان</h2>
+<label>زبان پیش‌فرض</label>
+<select><option>فارسی</option><option>العربية</option></select>
+<p class="note">نسخه سایت برای مخاطبان ایران و عراق آماده خواهد شد.</p>
+</section>
+<section class="card full" id="theme">
+<h2>تنظیمات قالب و ظاهر</h2>
+<label>قالب سایت</label>
+<select><option>لوکس تیره و طلایی</option><option>روشن و مینیمال</option></select>
+<p class="note">تغییر قالب پس از اتصال سیستم مدیریت قالب فعال می‌شود.</p>
+</section>
+</div>
+<div id="status">پنل نمایشی آماده است؛ هنوز اطلاعاتی ذخیره نمی‌شود.</div>
+</main>
+</div>
+</body>
+</html>

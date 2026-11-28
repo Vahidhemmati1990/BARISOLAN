@@ -3,318 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BARISOLAN | سقف کشسان</title>
-<meta name="description" content="اجرای تخصصی سقف‌های کشسان باریسول، نورپردازی و طراحی مدرن سقف.">
-
+<meta name="theme-color" content="#10151c">
+<title>BARISOLAN | طراحی و اجرای سقف‌های کشسان</title>
+<meta name="description" content="BARISOLAN؛ طراحی، فروش و اجرای سقف‌های کشسان، نورپردازی و سقف‌های مدرن در ایران و عراق.">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:#10151c;color:#f5f5f5;font-family:Vazirmatn,sans-serif;line-height:2}
-a{text-decoration:none;color:inherit}
-.container{width:92%;max-width:1180px;margin:auto}
-header{background:#111923;border-bottom:1px solid #293340;position:sticky;top:0;z-index:10}
-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:15px}
-.logo{font-size:24px;font-weight:800;color:#d8b775;letter-spacing:2px}
-.logo small{display:block;font-size:10px;letter-spacing:4px;color:#aaa}
-.links{display:flex;gap:20px;font-size:13px}
-.links a:hover{color:#d8b775}
-button,.btn{font-family:inherit;cursor:pointer;border-radius:12px;padding:12px 20px;font-weight:600}
-.gold{background:#d8b775;color:#171717;border:0}
-.outline{border:1px solid #d8b775;background:transparent;color:#d8b775}
-.hero{
- min-height:600px;display:flex;align-items:center;
- background:linear-gradient(90deg,rgba(16,21,28,.3),rgba(16,21,28,.95)),
- url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85') center/cover;
- padding:70px 0
-}
-.hero-content{max-width:700px}
-.tag{color:#d8b775;border:1px solid #d8b775;border-radius:30px;padding:5px 15px;font-size:13px;display:inline-block}
-h1{font-size:clamp(30px,5vw,55px);line-height:1.6;margin:20px 0}
-h1 span{color:#d8b775}
-.hero p{color:#ddd;max-width:600px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-section{padding:80px 0}
-.head{text-align:center;margin-bottom:40px}
-.head h2{font-size:32px;margin:10px}
-.head p{color:#aab2bc;font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#18222d;border:1px solid #293340;border-radius:18px;overflow:hidden;transition:.3s}
-.card:hover{transform:translateY(-4px);border-color:#d8b775}
-.card img{width:100%;height:240px;object-fit:cover}
-.card-body{padding:20px}
-.card h3{margin-bottom:8px}
-.card p{font-size:13px;color:#aab2bc}
-.icon{font-size:28px;color:#d8b775;margin-bottom:10px}
-.services .card{padding:25px}
-.about{background:#131b25}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
-.about-grid img{width:100%;height:380px;object-fit:cover;border-radius:20px}
-.about-grid p{color:#aab2bc;margin:15px 0}
-.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
-.features div{background:#1c2935;padding:12px;border-radius:10px;color:#d8b775;font-size:13px}
-.cta{border:1px solid #55462d;background:#1a2430;padding:45px;border-radius:25px;text-align:center}
-.cta p{color:#aab2bc;margin:15px 0}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.contact-box{background:#18222d;border:1px solid #293340;padding:25px;border-radius:20px}
-.contact-box h3{margin-bottom:15px}
-.contact-item{padding:12px;background:#202c38;margin:10px 0;border-radius:12px;font-size:14px}
-input,textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #33414f;background:#101923;color:white;font-family:inherit;margin-bottom:12px}
-textarea{height:120px}
-footer{border-top:1px solid #293340;padding:35px 0;text-align:center;color:#aaa;font-size:12px}
-footer .logo{margin-bottom:15px}
-.footerlinks{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:15px}
-.modal{display:none;position:fixed;inset:0;background:#000b;z-index:100;align-items:center;justify-content:center;padding:20px}
-.modal.show{display:flex}
-.modal-box{background:#18222d;padding:25px;border-radius:20px;width:100%;max-width:420px}
-.modal-box h3{margin-bottom:15px}
-.msg{color:#d8b775;font-size:13px;margin:10px 0}
-.close{float:left;background:none;border:0;color:white;font-size:25px}
-.whatsapp{position:fixed;bottom:20px;left:20px;background:#16854a;color:white;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:20;font-size:24px}
-@media(max-width:850px){
- .links{display:none}
- .grid{grid-template-columns:repeat(2,1fr)}
- .about-grid,.contact-grid{grid-template-columns:1fr}
-}
-@media(max-width:550px){
- section{padding:55px 0}
- .grid{grid-template-columns:1fr}
- h1{font-size:33px}
- .hero{min-height:500px}
- .actions .btn{width:100%;text-align:center}
- .about-grid img{height:270px}
- .features{grid-template-columns:1fr}
- .cta{padding:30px 20px}
- .head h2{font-size:26px}
-}
+:root{--bg:#0c1219;--panel:#141e29;--panel2:#1b2936;--gold:#d8b775;--gold2:#f1d9a5;--text:#f6f3ec;--muted:#aeb8c2;--line:#2b3947;--accent:#d8b775}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{background:var(--bg);color:var(--text);font-family:Vazirmatn,sans-serif;line-height:1.95}
+a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button{cursor:pointer}
+.container{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:30;background:rgba(12,18,25,.94);border-bottom:1px solid var(--line);transition:opacity .35s,transform .35s,background .35s;backdrop-filter:blur(12px)}
+header.header-away{opacity:0;transform:translateY(-100%);pointer-events:none}
+nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px}.brand-mark{width:46px;height:46px;flex:none}
+.brand-name{font-weight:800;letter-spacing:2px;color:var(--gold);font-size:21px;line-height:1.2}.brand-sub{font-size:9px;letter-spacing:3px;color:#b5bec7}
+.navlinks{display:flex;gap:22px;font-size:13px;color:#d8dce0}.navlinks a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 19px;border-radius:12px;border:1px solid var(--gold);font-weight:700;font-size:13px;transition:.25s}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#171717;border:0}.btn-ghost{color:var(--gold);background:transparent}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+section{padding:76px 0}.hero{min-height:570px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(8,13,19,.24),rgba(8,13,19,.94)),url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85') center/cover;padding:80px 0}
+.hero-inner{max-width:690px}.eyebrow{display:inline-block;border:1px solid var(--gold);border-radius:30px;padding:4px 14px;color:var(--gold2);font-size:12px}
+h1{font-size:clamp(32px,5vw,56px);line-height:1.55;margin:19px 0}h1 span,.gold-text{color:var(--gold)}
+.hero p{color:#e0e3e5;max-width:620px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.section-head{text-align:center;margin-bottom:34px}.section-head h2{font-size:clamp(24px,3vw,34px);margin:9px 0}.section-head p{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.25s}.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card img{display:block;width:100%;height:220px;object-fit:cover}.card-body{padding:17px}.card h3{font-size:16px;margin-bottom:5px}.card p{font-size:13px;color:var(--muted)}
+.portfolio{padding-top:65px}.portfolio .card img{height:245px}
+.services .card{padding:22px}.service-icon{font-size:27px;color:var(--gold);margin-bottom:7px}
+.about{background:#111a24}.about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px}.about-grid img{width:100%;height:360px;object-fit:cover;border-radius:19px;border:1px solid var(--line)}.about-copy p{color:var(--muted);margin:12px 0}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.features div{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;color:var(--gold2);font-size:12px}
+.detail-panel{background:linear-gradient(135deg,#172330,#101923);border:1px solid #665334;border-radius:20px;padding:30px}.detail-panel h2{margin-bottom:12px}.detail-panel p{color:#c4ccd3;white-space:pre-line}
+.contact-area{background:#101923}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}.contact-box{background:var(--panel);border:1px solid var(--line);padding:20px;border-radius:17px}.contact-box h3{font-size:17px;margin-bottom:13px}
+.contact-person{background:#101923;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0}.person-name{font-weight:700}.person-number{direction:ltr;text-align:right;color:var(--gold2);font-weight:700;letter-spacing:.5px;margin:2px 0 9px}.person-actions{display:flex;gap:8px;flex-wrap:wrap}.person-actions .btn{padding:7px 13px;font-size:12px}
+input,textarea,select{width:100%;background:#0d151e;color:white;border:1px solid #354555;border-radius:10px;padding:12px;margin:0 0 11px;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--gold)}textarea{min-height:110px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:38px 0 28px;text-align:center;color:var(--muted);font-size:12px}
+.footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:13px}.signature{display:inline-flex;align-items:center;gap:12px;margin:23px auto 0;padding:12px 22px;border:1px solid rgba(216,183,117,.65);border-radius:8px 22px 8px 22px;background:linear-gradient(135deg,rgba(216,183,117,.12),rgba(255,255,255,.02));box-shadow:0 8px 30px #0005;transform:rotate(-1deg)}
+.signature-mark{font-family:Georgia,serif;font-style:italic;font-size:28px;color:var(--gold2);border-right:1px solid #806b45;padding-right:12px}.signature-name{font-family:Georgia,serif;font-style:italic;letter-spacing:1.4px;color:#e8d5ad;font-size:17px}.signature small{display:block;font-family:Vazirmatn,sans-serif;font-style:normal;font-size:9px;letter-spacing:2px;color:#9da7b0}
+.whatsapp-float{position:fixed;left:18px;bottom:18px;width:52px;height:52px;border-radius:50%;background:#168b52;color:white;display:grid;place-items:center;font-size:24px;z-index:20;box-shadow:0 6px 22px #0007}
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:100;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:23px;width:min(430px,100%);max-height:90vh;overflow:auto}.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.close{background:none;border:0;color:white;font-size:25px}
+.admin{display:none;position:fixed;inset:0;background:#080d13ed;z-index:110;overflow:auto;padding:20px}.admin.show{display:block}.admin-wrap{max-width:850px;margin:25px auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-note,.msg{color:var(--gold2);font-size:12px;margin:8px 0}.template-list{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:10px 0 18px}.template{border:1px solid var(--line);background:#0d151e;color:white;border-radius:10px;padding:12px}.template.active{border-color:var(--gold);color:var(--gold2)}
+@media(max-width:850px){.navlinks{display:none}.grid{grid-template-columns:repeat(2,1fr)}.about-grid,.contact-grid{grid-template-columns:1fr}}
+@media(max-width:560px){section{padding:55px 0}.grid{grid-template-columns:1fr}.hero{min-height:490px;padding:60px 0}.actions .btn{width:100%}.about-grid img{height:260px}.features{grid-template-columns:1fr}.admin-grid{grid-template-columns:1fr}.template-list{grid-template-columns:1fr 1fr}.brand-name{font-size:18px}}
 </style>
 </head>
-
 <body>
+<header id="siteHeader"><div class="container"><nav>
+<a class="brand" href="#home" aria-label="BARISOLAN">
+<svg class="brand-mark" viewBox="0 0 100 100" role="img" aria-label="لوگوی باریسولان"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3dda9"/><stop offset="1" stop-color="#b18a48"/></linearGradient></defs><path d="M13 69V31L50 10 87 31V69L50 90Z" fill="none" stroke="url(#g)" stroke-width="3"/><path d="M25 62V37L50 23 75 37V62L50 77Z" fill="none" stroke="url(#g)" stroke-width="2"/><path d="M25 50H75M50 23V77" stroke="url(#g)" stroke-width="2"/><path d="M37 62L50 39 63 62" fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/></svg>
+<span><span class="brand-name">BARISOLAN</span><span class="brand-sub">STRETCH CEILING</span></span></a>
+<div class="navlinks"><a href="#home">خانه</a><a href="#portfolio">نمونه‌کارها</a><a href="#services">خدمات</a><a href="#about">درباره ما</a><a href="#contact">تماس</a></div>
+<button class="btn btn-ghost" onclick="openAuth()">ورود مدیر</button>
+</nav></div></header>
 
-<header>
-<div class="container">
-<nav>
-<a href="#home" class="logo">BARISOLAN<small>STRETCH CEILING</small></a>
-<div class="links">
-<a href="#home">خانه</a>
-<a href="#services">خدمات</a>
-<a href="#about">درباره ما</a>
-<a href="#portfolio">نمونه کارها</a>
-<a href="#contact">تماس</a>
-</div>
-<button class="outline" onclick="openAuth()">ورود / ثبت‌نام</button>
-</nav>
-</div>
-</header>
+<section class="hero" id="home"><div class="container"><div class="hero-inner">
+<span class="eyebrow">طراحی • فروش • اجرای تخصصی</span>
+<h1 id="heroTitle">زیبایی معماری در <span>سقف‌های مدرن باریسول</span></h1>
+<p id="heroText">طراحی، فروش و اجرای انواع سقف‌های کشسان مدرن، نورپردازی اختصاصی و راهکارهای معماری برای فضاهای مسکونی، تجاری و پروژه‌های لوکس.</p>
+<div class="actions"><a class="btn btn-gold" href="#portfolio">مشاهده نمونه‌کارها</a><a class="btn btn-ghost" href="#contact">درخواست مشاوره</a></div>
+</div></div></section>
 
-<section class="hero" id="home">
-<div class="container">
-<div class="hero-content">
-<div class="tag">اجرای تخصصی سقف‌های کشسان</div>
-<h1>زیبایی معماری در <span>سقف‌های مدرن باریسول</span></h1>
-<p>طراحی، فروش و اجرای انواع سقف‌های کشسان مدرن، نورپردازی اختصاصی و راهکارهای معماری برای فضاهای مسکونی، تجاری و پروژه‌های لوکس.</p>
-<div class="actions">
-<a href="#portfolio" class="btn gold">مشاهده نمونه کارها</a>
-<a href="#contact" class="btn outline">درخواست مشاوره</a>
-</div>
-</div>
-</div>
-</section>
+<section class="portfolio" id="portfolio"><div class="container">
+<div class="section-head"><span class="eyebrow">PORTFOLIO</span><h2>نمونه پروژه‌ها</h2><p>نمونه‌هایی از فضاهای مدرن و ایده‌های طراحی سقف</p></div>
+<div class="grid" id="portfolioGrid">
+<article class="card"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85" alt="فضای مسکونی"><div class="card-body"><h3>فضای مسکونی</h3><p>طراحی سقف مدرن</p></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85" alt="فضای داخلی"><div class="card-body"><h3>فضای داخلی</h3><p>ترکیب نور و معماری</p></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1000&q=85" alt="معماری مدرن"><div class="card-body"><h3>طراحی معماری</h3><p>اجرای پروژه مدرن</p></div></article>
+</div></div></section>
 
-<section id="services">
-<div class="container">
-<div class="head">
-<div class="tag">خدمات</div>
-<h2>طراحی، فروش و اجرای انواع سقف‌های مدرن</h2>
-<p>ارائه راهکارهای تخصصی سقف‌های کشسان، نورپردازی و طراحی متناسب با معماری فضای شما.</p>
-</div>
+<section id="services"><div class="container">
+<div class="section-head"><span class="eyebrow">SERVICES</span><h2>طراحی، فروش و اجرای انواع سقف‌های مدرن</h2><p>راهکارهای تخصصی متناسب با معماری فضای شما</p></div>
 <div class="grid services">
-<div class="card"><div class="icon">✧</div><h3>سقف کشسان</h3><p>اجرای سقف‌های کشسان در فضاهای مسکونی و تجاری.</p></div>
-<div class="card"><div class="icon">☼</div><h3>سقف نورپردازی</h3><p>نور یکپارچه و طراحی نورپردازی مدرن.</p></div>
-<div class="card"><div class="icon">◈</div><h3>سقف چاپی</h3><p>طرح‌های تصویری و اختصاصی متناسب با فضا.</p></div>
-<div class="card"><div class="icon">◇</div><h3>سقف مات</h3><p>طراحی مینیمال و ظاهری ساده و مدرن.</p></div>
-<div class="card"><div class="icon">✦</div><h3>سقف براق</h3><p>جلوه انعکاسی و زیبایی بصری در محیط.</p></div>
-<div class="card"><div class="icon">▧</div><h3>طراحی اختصاصی</h3><p>انتخاب رنگ، نور و طرح متناسب با پروژه.</p></div>
-</div>
-</div>
-</section>
+<div class="card"><div class="card-body"><div class="service-icon">✧</div><h3>سقف کشسان</h3><p>اجرای سقف‌های کشسان در فضاهای مسکونی و تجاری.</p></div></div>
+<div class="card"><div class="card-body"><div class="service-icon">☼</div><h3>سقف نورپردازی</h3><p>نور یکپارچه و طراحی نورپردازی مدرن.</p></div></div>
+<div class="card"><div class="card-body"><div class="service-icon">◈</div><h3>سقف چاپی</h3><p>طرح‌های تصویری و اختصاصی متناسب با فضا.</p></div></div>
+<div class="card"><div class="card-body"><div class="service-icon">◇</div><h3>سقف مات</h3><p>طراحی مینیمال و ظاهری ساده و مدرن.</p></div></div>
+<div class="card"><div class="card-body"><div class="service-icon">✦</div><h3>سقف براق</h3><p>جلوه انعکاسی و زیبایی بصری در محیط.</p></div></div>
+<div class="card"><div class="card-body"><div class="service-icon">▧</div><h3>طراحی اختصاصی</h3><p>انتخاب رنگ، نور و طرح متناسب با پروژه.</p></div></div>
+</div></div></section>
 
-<section class="about" id="about">
-<div class="container about-grid">
+<section class="about" id="about"><div class="container about-grid">
 <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85" alt="فضای داخلی مدرن">
-<div>
-<div class="tag">BARISOLAN</div>
-<h2>طراحی، فروش و اجرای سقف‌های کشسان و مدرن</h2>
-<p>BARISOLAN با ارائه خدمات طراحی، فروش و اجرای انواع سقف‌های کشسان و مدرن، راهکارهای تخصصی برای زیبایی، نورپردازی و هماهنگی معماری فضاهای مسکونی، تجاری و پروژه‌های خاص ارائه می‌دهد.</p>
-<div class="features">
-<div>✓ اجرای تخصصی</div>
-<div>✓ طراحی مدرن</div>
-<div>✓ نورپردازی متنوع</div>
-<div>✓ مشاوره پروژه</div>
-</div>
-</div>
-</div>
-</section>
+<div class="about-copy"><span class="eyebrow">BARISOLAN</span><h2 style="margin-top:12px">طراحی، فروش و اجرای سقف‌های کشسان و مدرن</h2>
+<p id="aboutText">BARISOLAN با ارائه خدمات طراحی، فروش و اجرای انواع سقف‌های کشسان و مدرن، راهکارهای تخصصی برای زیبایی، نورپردازی و هماهنگی معماری فضاهای مسکونی، تجاری و پروژه‌های خاص ارائه می‌دهد.</p>
+<div class="features"><div>✓ اجرای تخصصی</div><div>✓ طراحی مدرن</div><div>✓ نورپردازی متنوع</div><div>✓ مشاوره پروژه</div></div></div>
+</div></section>
 
-<section id="portfolio">
-<div class="container">
-<div class="head">
-<div class="tag">Portfolio</div>
-<h2>نمونه پروژه‌ها</h2>
-<p>تصاویر زیر فعلاً نمونه نمایشی هستند؛ بعداً تصاویر پروژه‌های واقعی خودت را قرار می‌دهیم.</p>
-</div>
-<div class="grid">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85" alt="طراحی داخلی">
-<div class="card-body"><h3>فضای مسکونی</h3><p>طراحی سقف مدرن</p></div>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85" alt="فضای مدرن">
-<div class="card-body"><h3>فضای داخلی</h3><p>ترکیب نور و معماری</p></div>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1000&q=85" alt="معماری">
-<div class="card-body"><h3>طراحی معماری</h3><p>اجرای پروژه مدرن</p></div>
-</div>
-</div>
-</div>
-</section>
+<section><div class="container"><div class="detail-panel"><span class="eyebrow">PROJECT DETAILS</span><h2>توضیحات و معرفی خدمات</h2><p id="workDescription">در این بخش می‌توانید معرفی کامل خدمات، متریال، مراحل اجرا و توضیحات پروژه‌های باریسولان را مطالعه کنید.</p></div></div></section>
 
-<section>
-<div class="container">
-<div class="cta">
-<h2>فضای شما، طراحی متفاوت</h2>
-<p>برای بررسی پروژه و انتخاب طرح مناسب با ما در ارتباط باشید.</p>
-<a href="#contact" class="btn gold">درخواست مشاوره</a>
-</div>
-</div>
-</section>
-
-<section id="contact">
-<div class="container">
-<div class="head">
-<div class="tag">ارتباط</div>
-<h2>شروع یک پروژه متفاوت</h2>
-<p>برای دریافت مشاوره با ما در ارتباط باشید.</p>
-</div>
+<section class="contact-area" id="contact"><div class="container">
+<div class="section-head"><span class="eyebrow">CONTACT</span><h2>برای مشاوره در ایران و عراق با ما در ارتباط باشید</h2><p>تماس مستقیم یا گفت‌وگو در واتساپ</p></div>
 <div class="contact-grid">
-<div class="contact-box">
-<h3>راه‌های ارتباطی</h3>
-<div class="contact-item">تلفن: شماره تماس در این قسمت قرار خواهد گرفت</div>
-<div class="contact-item">خدمات: طراحی و اجرای سقف‌های کشسان</div>
-<div class="contact-item">BARISOLAN</div>
+<div class="contact-box"><h3>راه‌های تماس</h3>
+<div class="contact-person"><div class="person-name">سید حمیدرضا موسوی</div><div class="person-number">+989330000479</div><div class="person-actions"><a class="btn btn-gold" href="tel:+989330000479">تماس تلفنی</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/989330000479?text=سلام، برای دریافت مشاوره سقف کشسان از سایت BARISOLAN پیام می‌دهم.">واتساپ</a></div></div>
+<div class="contact-person"><div class="person-name">رامین غفاری</div><div class="person-number">+989382196881</div><div class="person-actions"><a class="btn btn-gold" href="tel:+989382196881">تماس تلفنی</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/989382196881?text=سلام، برای دریافت مشاوره سقف کشسان از سایت BARISOLAN پیام می‌دهم.">واتساپ</a></div></div>
 </div>
-<div class="contact-box">
-<h3>درخواست مشاوره</h3>
-<form id="contactForm">
-<input id="name" placeholder="نام شما" required>
-<input id="phone" placeholder="شماره تماس" required>
-<input id="subject" placeholder="موضوع پروژه">
-<textarea id="description" placeholder="توضیحات"></textarea>
-<button class="gold" style="width:100%">ارسال درخواست</button>
-<div id="contactMsg" class="msg"></div>
-</form>
-</div>
-</div>
-</div>
-</section>
+<div class="contact-box"><h3>درخواست مشاوره</h3><form id="contactForm"><input id="customerName" placeholder="نام شما" required><input id="customerPhone" placeholder="شماره تماس با کد کشور" required><select id="customerCountry"><option value="ایران">ایران</option><option value="عراق">عراق</option><option value="سایر">سایر</option></select><textarea id="customerMessage" placeholder="توضیح کوتاه درباره پروژه"></textarea><button class="btn btn-gold" style="width:100%" type="submit">ارسال در واتساپ</button></form><p class="admin-note">با زدن دکمه، متن درخواست در واتساپ شماره اول آماده ارسال می‌شود.</p></div>
+</div></div></section>
 
-<footer>
-<div class="container">
-<div class="logo">BARISOLAN</div>
-<div class="footerlinks">
-<a href="#home">خانه</a>
-<a href="#services">خدمات</a>
-<a href="#portfolio">نمونه کارها</a>
-<a href="#contact">تماس</a>
-</div>
-<p>طراحی و اجرای سقف‌های کشسان</p>
-<p>© BARISOLAN</p>
-</div>
-</footer>
+<footer><div class="container"><div class="brand" style="justify-content:center"><svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M13 69V31L50 10 87 31V69L50 90Z" fill="none" stroke="#d8b775" stroke-width="3"/><path d="M25 62V37L50 23 75 37V62L50 77Z" fill="none" stroke="#d8b775" stroke-width="2"/><path d="M25 50H75M50 23V77" stroke="#d8b775" stroke-width="2"/></svg><span><span class="brand-name">BARISOLAN</span><span class="brand-sub">STRETCH CEILING</span></span></div>
+<div class="footer-links"><a href="#home">خانه</a><a href="#portfolio">نمونه‌کارها</a><a href="#services">خدمات</a><a href="#contact">تماس</a></div>
+<p>طراحی، فروش و اجرای سقف‌های کشسان و مدرن</p>
+<div class="signature"><span class="signature-mark">VH</span><span><span class="signature-name">Vahid Hemmati</span><small>FOUNDER • BARISOLAN</small></span></div>
+<p style="margin-top:18px">© BARISOLAN</p></div></footer>
 
-<div class="modal" id="authModal">
-<div class="modal-box">
-<button class="close" onclick="closeAuth()">×</button>
-<h3>ورود / ثبت‌نام</h3>
-<input id="email" type="email" placeholder="ایمیل">
-<input id="password" type="password" placeholder="رمز عبور">
-<button class="gold" style="width:100%" onclick="login()">ورود</button>
-<button class="outline" style="width:100%;margin-top:10px" onclick="register()">ثبت‌نام</button>
-<button class="outline" style="width:100%;margin-top:10px" onclick="logout()">خروج</button>
-<div id="authMsg" class="msg"></div>
-</div>
-</div>
+<a class="whatsapp-float" href="https://wa.me/989330000479?text=سلام، برای مشاوره سقف کشسان پیام می‌دهم." target="_blank" rel="noopener" aria-label="واتساپ">◉</a>
 
-<a class="whatsapp" href="#contact">☎</a>
+<div class="modal" id="authModal"><div class="modal-box"><div class="modal-top"><h3>ورود مدیر سایت</h3><button class="close" onclick="closeAuth()">×</button></div>
+<input id="email" type="email" placeholder="ایمیل مدیر"><input id="password" type="password" placeholder="رمز عبور">
+<button class="btn btn-gold" style="width:100%" onclick="login()">ورود</button><p id="authMsg" class="msg"></p>
+</div></div>
+
+<div class="admin" id="adminPanel"><div class="admin-wrap">
+<div class="admin-top"><h2>مدیریت محتوای BARISOLAN</h2><div><button class="btn btn-ghost" onclick="logout()">خروج</button><button class="btn btn-ghost" onclick="closeAdmin()">بستن</button></div></div>
+<p class="admin-note">این پنل در این نسخه تغییرات را فقط در همین مرورگر ذخیره می‌کند. برای انتشار تغییرات برای همه بازدیدکنندگان، اتصال امن دیتابیس در مرحله بعد لازم است.</p>
+<h3>انتخاب قالب رنگی</h3><div class="template-list">
+<button class="template" data-theme="gold" onclick="setTheme('gold')">مشکی و طلایی</button><button class="template" data-theme="blue" onclick="setTheme('blue')">سرمه‌ای و نقره‌ای</button><button class="template" data-theme="emerald" onclick="setTheme('emerald')">ذغالی و زمردی</button><button class="template" data-theme="sand" onclick="setTheme('sand')">قهوه‌ای و شامپاینی</button><button class="template" data-theme="violet" onclick="setTheme('violet')">ذغالی و بنفش</button><button class="template" data-theme="light" onclick="setTheme('light')">روشن و مینیمال</button>
+</div>
+<h3>ویرایش متن‌های سایت</h3>
+<label>عنوان اصلی</label><input id="editHeroTitle">
+<label>متن معرفی صفحه اول</label><textarea id="editHeroText"></textarea>
+<label>توضیحات درباره ما</label><textarea id="editAboutText"></textarea>
+<label>توضیحات کامل خدمات و پروژه‌ها</label><textarea id="editWorkDescription"></textarea>
+<label>لوگوی دلخواه (فایل تصویر)</label><input id="editLogo" type="file" accept="image/*">
+<button class="btn btn-gold" onclick="saveContent()">ذخیره تغییرات در این مرورگر</button>
+<p id="adminMsg" class="msg"></p>
+</div></div>
 
 <script>
-/* تنظیمات Supabase */
-
-const SUPABASE_URL = "https://vctzylklunrcxfmiefvl.supabase.co";
-
-const SUPABASE_KEY = "sb_publishable_xgzpHmJzsj2ZZCjXBVy7a_CdLJUeJV";
-let client = null;
-
-if(SUPABASE_KEY !== "YOUR_SUPABASE_PUBLIC_KEY"){
- client = window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-}
-
-function openAuth(){
- document.getElementById("authModal").classList.add("show");
-}
-function closeAuth(){
- document.getElementById("authModal").classList.remove("show");
-}
-
-async function register(){
- if(!client){
-  document.getElementById("authMsg").textContent="اتصال Supabase هنوز تنظیم نشده است.";
-  return;
- }
- const email=document.getElementById("email").value;
- const password=document.getElementById("password").value;
- if(!email||!password){
-  document.getElementById("authMsg").textContent="ایمیل و رمز را وارد کنید.";
-  return;
- }
- const {error}=await client.auth.signUp({email,password});
- document.getElementById("authMsg").textContent=error?error.message:"ثبت‌نام انجام شد. ایمیل خود را بررسی کنید.";
-}
-
+const SUPABASE_URL="https://vctzylklunrcxfmiefvl.supabase.co";
+const SUPABASE_KEY="sb_publishable_xgzpHmJzsj2ZZCjXBVy7a_CdLJUeJV";
+let supabaseClient=null;
+try{if(window.supabase?.createClient)supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY)}catch(e){console.error(e)}
+const $=id=>document.getElementById(id);
+function openAuth(){$("authModal").classList.add("show")}
+function closeAuth(){$("authModal").classList.remove("show")}
 async function login(){
- if(!client){
-  document.getElementById("authMsg").textContent="اتصال Supabase هنوز تنظیم نشده است.";
-  return;
- }
- const email=document.getElementById("email").value;
- const password=document.getElementById("password").value;
- if(!email||!password){
-  document.getElementById("authMsg").textContent="ایمیل و رمز را وارد کنید.";
-  return;
- }
- const {error}=await client.auth.signInWithPassword({email,password});
- document.getElementById("authMsg").textContent=error?error.message:"ورود انجام شد.";
+ if(!supabaseClient){$("authMsg").textContent="ارتباط با سرویس ورود برقرار نشد.";return}
+ const email=$("email").value.trim(),password=$("password").value;
+ if(!email||!password){$("authMsg").textContent="ایمیل و رمز عبور را وارد کنید.";return}
+ const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+ if(error){$("authMsg").textContent="ورود ناموفق بود: "+error.message;return}
+ closeAuth();openAdmin();$("authMsg").textContent="";
 }
-
-async function logout(){
- if(!client){
-  document.getElementById("authMsg").textContent="اتصال تنظیم نشده است.";
-  return;
- }
- const {error}=await client.auth.signOut();
- document.getElementById("authMsg").textContent=error?error.message:"خروج انجام شد.";
+async function logout(){if(supabaseClient)await supabaseClient.auth.signOut();closeAdmin();openAuth()}
+function openAdmin(){if(!supabaseClient)return; $("adminPanel").classList.add("show");loadContent()}
+function closeAdmin(){$("adminPanel").classList.remove("show")}
+const defaults={heroTitle:"زیبایی معماری در سقف‌های مدرن باریسول",heroText:"طراحی، فروش و اجرای انواع سقف‌های کشسان مدرن، نورپردازی اختصاصی و راهکارهای معماری برای فضاهای مسکونی، تجاری و پروژه‌های لوکس.",aboutText:"BARISOLAN با ارائه خدمات طراحی، فروش و اجرای انواع سقف‌های کشسان و مدرن، راهکارهای تخصصی برای زیبایی، نورپردازی و هماهنگی معماری فضاهای مسکونی، تجاری و پروژه‌های خاص ارائه می‌دهد.",workDescription:"در این بخش می‌توانید معرفی کامل خدمات، متریال، مراحل اجرا و توضیحات پروژه‌های باریسولان را مطالعه کنید.",theme:"gold"};
+function getContent(){try{return {...defaults,...JSON.parse(localStorage.getItem("barisolan_content")||"{}")}}catch(e){return {...defaults}}}
+function loadContent(){const d=getContent();$("editHeroTitle").value=d.heroTitle;$("editHeroText").value=d.heroText;$("editAboutText").value=d.aboutText;$("editWorkDescription").value=d.workDescription;applyContent(d);setTheme(d.theme,false)}
+function applyContent(d){$("heroTitle").textContent=d.heroTitle;$("heroText").textContent=d.heroText;$("aboutText").textContent=d.aboutText;$("workDescription").textContent=d.workDescription}
+function saveContent(){
+ const d={...getContent(),heroTitle:$("editHeroTitle").value,heroText:$("editHeroText").value,aboutText:$("editAboutText").value,workDescription:$("editWorkDescription").value};
+ localStorage.setItem("barisolan_content",JSON.stringify(d));applyContent(d);
+ const f=$("editLogo").files[0];if(f){const reader=new FileReader();reader.onload=()=>{localStorage.setItem("barisolan_logo",reader.result);applyLogo(reader.result)};reader.readAsDataURL(f)}
+ $("adminMsg").textContent="تغییرات در همین مرورگر ذخیره شد.";
 }
-
-/* فرم تماس فعلاً نمایش پیام دارد و در دیتابیس ذخیره نمی‌کند */
-document.getElementById("contactForm").addEventListener("submit",function(e){
- e.preventDefault();
- document.getElementById("contactMsg").textContent="فرم آماده است؛ اتصال ارسال درخواست در مرحله بعد تنظیم می‌شود.";
-});
+function applyLogo(src){document.querySelectorAll(".brand-mark").forEach(svg=>{const img=document.createElement("img");img.src=src;img.alt="لوگوی BARISOLAN";img.className="brand-mark";svg.replaceWith(img)})}
+function setTheme(name,save=true){
+ const themes={gold:["#0c1219","#141e29","#1b2936","#d8b775","#f1d9a5"],blue:["#0b1420","#142338","#1c3047","#a9c7df","#e2f0fa"],emerald:["#101715","#19251f","#24352d","#9dc7a7","#d8f0dc"],sand:["#17130f","#282019","#382d22","#d6b68a","#f1dfc5"],violet:["#12101b","#201b30","#302842","#bca5ed","#e5dafa"],light:["#f1f0ec","#ffffff","#e9e7e1","#9b7740","#5d492d"]};
+ const t=themes[name]||themes.gold,root=document.documentElement;
+ ["--bg","--panel","--panel2","--gold","--gold2"].forEach((k,i)=>root.style.setProperty(k,t[i]));
+ if(name==="light"){document.body.style.color="#20242a"}else{document.body.style.color="var(--text)"}
+ if(save){const d={...getContent(),theme:name};localStorage.setItem("barisolan_content",JSON.stringify(d))}
+ document.querySelectorAll(".template").forEach(b=>b.classList.toggle("active",b.dataset.theme===name));
+}
+const saved=getContent();applyContent(saved);setTheme(saved.theme,false);
+const logoSaved=localStorage.getItem("barisolan_logo");if(logoSaved)applyLogo(logoSaved);
+let lastY=window.scrollY;window.addEventListener("scroll",()=>{const y=window.scrollY,header=$("siteHeader");if(y>130&&y>lastY)header.classList.add("header-away");else if(y<lastY)header.classList.remove("header-away");lastY=y});
+$("contactForm").addEventListener("submit",e=>{e.preventDefault();const name=$("customerName").value.trim(),phone=$("customerPhone").value.trim(),country=$("customerCountry").value,message=$("customerMessage").value.trim();const text=`سلام، درخواست مشاوره از سایت BARISOLAN دارم.%0Aنام: ${encodeURIComponent(name)}%0Aشماره تماس: ${encodeURIComponent(phone)}%0Aکشور: ${encodeURIComponent(country)}%0Aتوضیحات: ${encodeURIComponent(message)}`;window.open("https://wa.me/989330000479?text="+text,"_blank","noopener")});
+(async()=>{if(supabaseClient){const {data}=await supabaseClient.auth.getSession();if(data.session){/* ورود قبلی برقرار است؛ پنل فقط با کلیک مدیر باز می‌شود */}}})();
 </script>
-
 </body>
 </html>
